@@ -63,6 +63,38 @@ services:
       nat-net:
         ipv4_address: 192.168.10.3
 
+  # CentOS 版本
+  centos-ssh:
+    build:
+      context: ./centos
+      dockerfile: Dockerfile
+    container_name: centos-ssh
+    hostname: centos-ssh
+    privileged: true
+    ports:
+      - "10040:22"
+      - "20040-20049:20040-20049/tcp"
+      - "20040-20049:20040-20049/udp"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    sysctls:
+      - net.ipv4.ip_forward=1
+    environment:
+      - ROOT_PASSWORD=123456
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./data/centos-ssh:/data
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+    networks:
+      nat-net:
+        ipv4_address: 192.168.10.4
+
 networks:
   nat-net:
     driver: bridge

@@ -25,6 +25,8 @@ jobs:
             context: ./debian
           - os_type: alpine
             context: ./alpine
+          - os_type: centos
+            context: ./centos
 
     steps:
       - name: Checkout repository

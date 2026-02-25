@@ -1,0 +1,3 @@
+Welcome to CentOS Stream 8 Container
+────────────────────────────────────────────────────
+github: https://github.com/code-gopher/docker-ssh-nat

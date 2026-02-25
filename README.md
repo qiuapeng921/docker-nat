@@ -4,7 +4,7 @@
 
 ## ✨ 功能特性
 
-- ✅ **双版本支持**: 提供 Debian (bookworm-slim) 和 Alpine Linux 两个版本
+- ✅ **三版本支持**: 提供 Debian (bookworm-slim)、Alpine Linux 和 CentOS Stream 8 三个版本
 - ✅ **常用工具箱**: 内置 30+ 工具 (curl, wget, ping, telnet, traceroute, dig, vim, htop, iotop, lsof, zip, tree 等)
 - ✅ **灵活认证**: 支持自定义 root 密码或自动生成随机密码
 - ✅ **精美 Banner**: 登录时显示系统信息和命令速查
@@ -29,13 +29,19 @@ bash <(curl -sSL https://raw.githubusercontent.com/code-gopher/docker-nat/master
 
 # 示例: 启动一个密码为 123456 的 Debian 小鸡
 bash <(curl -sSL https://raw.githubusercontent.com/code-gopher/docker-nat/master/nat.sh) -t debian -p 123456
+
+# 示例: 启动一个密码为 123456 的 Alpine 小鸡
+bash <(curl -sSL https://raw.githubusercontent.com/code-gopher/docker-nat/master/nat.sh) -t alpine -p 123456
+
+# 示例: 启动一个密码为 123456 的 CentOS 小鸡
+bash <(curl -sSL https://raw.githubusercontent.com/code-gopher/docker-nat/master/nat.sh) -t centos -p 123456
 ```
 
 **参数说明:**
-- `-t`: 镜像类型 (`debian` 或 `alpine`)，**必填**。
+- `-t`: 镜像类型 (`debian`、`alpine` 或 `centos`)，**必填**。
 - `-p`: root 密码，如果不填则自动生成 **8-10 位**随机密码。
 - `-c`: CPU 限制，默认 `1` 核。
-- `-m`: 内存限制 (MB)，Debian 默认 `512`，Alpine 默认 `128`。
+- `-m`: 内存限制 (MB)，Debian 默认 `512`，Alpine 默认 `128`，CentOS 默认 `512`。
 
 ---
 
@@ -53,9 +59,13 @@ docker ps | grep nat-
 
 # 查看小鸡日志(包含密码信息)
 docker logs nat-debian-2
+docker logs nat-alpine-2
+docker logs nat-centos-2
 
 # 停止并删除小鸡
 docker rm -f nat-debian-2
+docker rm -f nat-alpine-2
+docker rm -f nat-centos-2
 ```
 
 ## 📦 包含的常用工具

@@ -117,7 +117,7 @@ deploy_container() {
 
     # 默认内存逻辑
     if [ -z "$MEM" ]; then
-        if [ "$TYPE" = "debian" ]; then MEM=512; else MEM=128; fi
+        if [ "$TYPE" = "debian" ]; then MEM=512; elif [ "$TYPE" = "centos" ]; then MEM=512; else MEM=128; fi
     fi
 
     # 随机密码
@@ -287,11 +287,13 @@ interactive_create() {
     echo -e "${BLUE}--- 新建容器向导 ---${NC}"
     echo "1. Debian"
     echo "2. Alpine"
-    read -p "选择系统 [1-2]: " sys_choice
+    echo "3. CentOS"
+    read -p "选择系统 [1-3]: " sys_choice
     
     case $sys_choice in
         1) TYPE="debian" ;;
         2) TYPE="alpine" ;;
+        3) TYPE="centos" ;;
         *) echo -e "${RED}无效选择${NC}"; return ;;
     esac
     
@@ -316,13 +318,13 @@ if [ $# -gt 0 ]; then
             p) PASS=$OPTARG ;;
             c) CPU=$OPTARG ;;
             m) MEM=$OPTARG ;;
-            h) echo "用法: $0 -t <debian|alpine> ..."; exit 0 ;;
+            h) echo "用法: $0 -t <debian|alpine|centos> ..."; exit 0 ;;
             *) exit 1 ;;
         esac
     done
 
     if [ -z "$TYPE" ]; then
-        echo "错误: 必须指定 -t <debian|alpine>"
+        echo "错误: 必须指定 -t <debian|alpine|centos>"
         exit 1
     fi
     
