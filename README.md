@@ -4,7 +4,7 @@
 
 ## ✨ 功能特性
 
-- ✅ **三版本支持**: 提供 Debian (bookworm-slim)、Alpine Linux 和 CentOS Stream 8 三个版本
+- ✅ **三版本支持**: 提供 Debian (bookworm-slim)、Alpine Linux 和 CentOS Stream 9 三个版本
 - ✅ **常用工具箱**: 内置 30+ 工具 (curl, wget, ping, telnet, traceroute, dig, vim, htop, iotop, lsof, zip, tree 等)
 - ✅ **灵活认证**: 支持自定义 root 密码或自动生成随机密码
 - ✅ **精美 Banner**: 登录时显示系统信息和命令速查

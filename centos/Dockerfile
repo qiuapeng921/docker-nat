@@ -1,5 +1,5 @@
-# CentOS Stream 8 容器镜像
-FROM quay.io/centos/centos:stream8
+# CentOS Stream 9 容器镜像
+FROM quay.io/centos/centos:stream9
 
 ENV TZ=Asia/Shanghai
 ENV ROOT_PASSWORD=123456
