@@ -7,7 +7,7 @@ ENV ROOT_PASSWORD=123456
 # 安装必要工具
 RUN dnf update -y && \
     dnf install -y --setopt=tsflags=nodocs \
-    openssh-server openssh-clients curl wget bash vim htop procps-ng \
+    openssh-server openssh-clients curl wget bash vim procps-ng \
     net-tools cronie tzdata which iproute hostname sudo shadow-utils \
     systemd systemd-sysv \
     && dnf clean all && rm -rf /var/cache/dnf
